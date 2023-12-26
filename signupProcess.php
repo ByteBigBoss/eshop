@@ -11,11 +11,11 @@ $gender = $_POST["g"];
 
 if (empty($fname)) {
   echo ("Please Enter Your First Name.");
-} else if (strlen($fname > 50)) {
+} else if (!strlen($fname > 50)) {
   echo ("First Name Must Contain LOWER THAN 50 characters.");
 } else if (empty($lname)) {
   echo ("Please Enter Your Last Name.");
-} else if (strlen($lname > 50)) {
+} else if (!strlen($lname > 50)) {
   echo ("Last Name Must Contain LOWER THAN 50 characters.");
 } else if (empty($email)) {
   echo ("Please Enter Your Email Address.");
@@ -49,7 +49,7 @@ if (empty($fname)) {
 
     Database::iud("INSERT INTO `user`
     (`fname`, `lname`, `email`, `password`, `mobile`, `joined_date`, `gender_gender_id`,`status_status_id`) 
-    VALUES('" . $fname . "', '" . $lname . "', '" . $email . "', '" . $mobile . "','" . $date . "', '" . $gender . "', '1')");
+    VALUES('".$fname."','".$lname."','".$email."','".$password."', '".$mobile."','".$date."','".$gender."','1')");
 
     echo ("success");
   }
