@@ -156,7 +156,12 @@ function resetPassword(){
     if(request.readyState === 4 && request.status === 200){
 
       var response = request.responseText;
-      alert(response);
+      if(response == "success"){
+        alert("Password Updated Successfully.");
+        forgotPasswordModal.hide();
+      }else {
+        alert(response);
+      }
 
     }
   }
