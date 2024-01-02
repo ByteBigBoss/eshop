@@ -190,3 +190,68 @@ function signout(){
     request.send();
 
 }
+
+function changeProfileImg(){
+  var img = document.getElementById("profileimage");
+  
+  img.onchange = function(){
+    var file = this.files[0];
+    var url = window.URL.createObjectURL(file);
+
+    document.getElementById("img").src = url;
+  }
+
+}
+
+function updateProfile(){
+  
+  var fname = document.getElementById("fname");
+  var lname = document.getElementById("lname");
+  var mobile = document.getElementById("mobile");
+  var line1 = document.getElementById("line1");
+  var line2 = document.getElementById("line2");
+  var province = document.getElementById("province");
+  var district = document.getElementById("district");
+  var city = document.getElementById("city");
+  var pcode = document.getElementById("pcode");
+  var image = document.getElementById("profileimage");
+
+  var form = new FormData();
+
+  form.append("f", fname.value);
+  form.append("l", lname.value);
+  form.append("m", mobile.value);
+  form.append("l1", line1.value);
+  form.append("l2", line2.value);
+  form.append("p", province.value);
+  form.append("d", district.value);
+  form.append("c", city.value);
+  form.append("pc", pcode.value);
+  form.append("i", image.files[0]);
+
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function(){
+    if(request.readyState === 4 && request.status === 200){
+      
+      var response = request.responseText;
+
+      if(response == "Updated" || response == "Saved"){
+        window.location.reload();
+      }
+      
+      else if(response == "You have not selected any image."){
+        alert("You have not selected any image.");
+        window.location.reload();
+      }
+
+      else{
+        alert(response);
+      }
+
+    }
+  }
+
+  request.open("POST","updateProfileProcess.php",true);
+  request.send(form);
+
+}
