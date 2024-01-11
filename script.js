@@ -32,6 +32,7 @@ function signup() {
               document.getElementById("msg").innerHTML = "Registration Successfull";
               document.getElementById("msg").className = "alert alert-success";
               document.getElementById("msgdiv").className = "d-block";
+              changeView();
           } else {
               document.getElementById("msg").innerHTML = response;
               document.getElementById("msgdiv").className = "d-block";
@@ -350,5 +351,181 @@ function changeProductImage(){
     }
 
   }
+
+}
+
+function changeStatus(id){
+
+  var product_id = id;
+
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function(){
+
+    if(request.readyState==4 && request.status==200){
+
+      var response = request.responseText;
+      
+      if(response == "deactivated" || response == "activated"){
+        window.location.reload();
+      }
+
+      else{
+        alert(response);
+      }
+
+    }
+
+  }
+  request.open("GET","changeStatusProcess.php?id="+product_id,true);
+  request.send();
+
+
+}
+
+
+// my product sort
+
+function sort1(x){
+
+  var search = document.getElementById("s");
+ 
+  var time = "0";
+  if(document.getElementById("n").checked){
+    time = "1";
+  }else if(document.getElementById("o").checked) {
+    time = "2";
+  }
+
+  var qty = "0";
+  if(document.getElementById("h").checked){
+    time = "1";
+  }else if(document.getElementById("l").checked) {
+    time = "2";
+  }
+
+  var condition = "0";
+  if(document.getElementById("b").checked){
+    time = "1";
+  }else if(document.getElementById("u").checked) {
+    time = "2";
+  }
+
+  var form = new FormData();
+  form.append("s",search.value);
+  form.append("t",time);
+  form.append("q",qty);
+  form.append("c",condition);
+  form.append("page",x);
+
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function(){
+
+    if (request.readyState == 4 && request.status){
+
+      var response = request.responseText;
+      document.getElementById('sort').innerHTML = response;
+
+    }
+
+  }
+  request.open("POST","sortProcess.php",true);
+  request.send(form);
+
+}
+
+function clearSort(){
+  window.location.reload();
+}
+
+
+function sendid(id){
+
+  var request = new XMLHttpRequest();
+
+  request.onreadystatechange = function(){
+
+    if(request.status == 200 & request.readyState == 4){
+
+      var response = request.responseText;
+      if(response=="Success"){
+        window.location = "updateProduct.php";
+      }
+
+    }
+
+  }
+
+  request.open("GET","sendIdProcess.php?id="+id,true);
+  request.send();
+
+}
+
+function updateProduct(){
+
+  var title = document.getElementById("t");
+  var qty = document.getElementById("q");
+  var dwc = document.getElementById("dwc");
+  var doc = document.getElementById("doc");
+  var description = document.getElementById("d");
+  var images = document.getElementById("imageuploader");
+
+  var form = new FormData();
+  form.append("t",title.value);
+  form.append("q", qty.value);
+  form.append("dwc",dwc.value);
+  form.append("doc",doc.value);
+  form.append("d",description.value);
+
+  var file_count = images.files.length;
+
+  for (var x = 0; x < file_count; x++) {
+
+    form.append("i"+x, images.files[x]);
+
+  }
+
+  var request = new XMLHttpRequest();
+
+  request.onreadystatechange = function(){
+
+    if(request.readyState == 4 & request.status == 200){
+
+      var response = request.responseText;
+      if(response=="Product has been updated"){
+        window.location = "myProducts.php";
+      }else{
+      alert(response);
+      }
+
+    }
+
+  }
+
+  request.open("POST","updateProductProcess.php",true);
+  request.send(form);
+
+}
+
+function basicSearch(x) {
+
+  var txt = document.getElementById("basic_search_txt");
+  var select = document.getElementById("basic_search_select");
+
+  var form = new FormData();
+  form.append("t",txt.value);
+  form.append("s",select.value);
+  form.append("page",x);
+
+  var request = new XMLHttpRequest();
+
+  request.onreadystatechange = function(){
+    if(request.status == 200 & request.readyState == 4){
+        var response = request.responseText;
+        document.getElementById("basicSearchResult").innerHTML = response;
+    }
+  }
+
+  request.open("POST","basicSearchProcess.php",true);
+  request.send(form);
 
 }

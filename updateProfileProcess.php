@@ -30,12 +30,13 @@ if($user_rs->num_rows == 1){
   if($address_rs->num_rows === 1){
 
     Database::iud("UPDATE `user_has_address` SET 
-    `city_city_id`='".$city."' 
-    `line1` = '".$line1."' 
-    `line2` = '".$line2."' 
-    `postal_code` = '".$postalCode."' 
+    `city_city_id`='".$city."' , 
+    `line1` = '".$line1."' ,
+    `line2` = '".$line2."' ,
+    `postal_code` = '".$pcode."' 
     WHERE `user_email` = '".$email."'
     ");
+    
 
   }else {
     
