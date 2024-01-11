@@ -209,8 +209,8 @@
                                             </div>
 
                                             <div class="col-6">
-                                                <label class="form-label" id="district">District</label>
-                                                <select class="form-select">
+                                                <label class="form-label" >District</label>
+                                                <select class="form-select" id="district">
                                                     <option value="0">Select District</option>
                                                     <?php
                                                     for ($x = 0; $x < $district_rs->num_rows; $x++) {
@@ -218,12 +218,12 @@
                                                         ?>
                                                         <option value="<?php echo $district_data["district_id"] ?>" <?php
                                                            if (!empty($address_details["district_id"])) {
-                                                               if ($province_data["district_id"] == $address_details["district_id"]) {
+                                                               if ($district_data["district_id"] == $address_details["district_id"]) {
                                                                    ?> selected <?php
                                                                }
                                                            }
                                                            ?>>
-                                                            <?php echo $province_data["district_name"] ?>
+                                                            <?php echo $district_data["district_name"] ?>
                                                         </option>
                                                         <?php
                                                     }
@@ -233,16 +233,16 @@
                                             </div>
 
                                             <div class="col-6">
-                                                <label class="form-label" id="city">City</label>
-                                                <select class="form-select">
+                                                <label class="form-label" >City</label>
+                                                <select class="form-select" id="city">
                                                     <option value="0">Select City</option>
                                                     <?php
                                                     for ($x = 0; $x < $city_rs->num_rows; $x++) {
                                                         $city_data = $city_rs->fetch_assoc();
                                                         ?>
                                                         <option value="<?php echo $city_data["city_id"] ?>" <?php
-                                                           if (!empty($city_data["city_id"])) {
-                                                               if ($city_data["city_id"] == $city_data["city_id"]) {
+                                                           if (!empty($address_details["city_id"])) {
+                                                               if ($city_data["city_id"] == $address_details["city_id"]) {
                                                                    ?> selected <?php
                                                                }
                                                            }

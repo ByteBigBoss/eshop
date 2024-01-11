@@ -67,11 +67,11 @@ include "connection.php";
                     </div>
 
                     <div class="col-12 col-lg-2 d-grid">
-                        <button class="btn btn-primary mt-3 mb-3">Search</button>
+                        <button class="btn btn-primary mt-3 mb-3" onclick="basicSearch(0);">Search</button>
                     </div>
 
                     <div class="col-12 col-lg-2 mt-2 mt-lg-4 text-center text-lg-start">
-                        <a href="#" class="text-decoration-none link-secondary fw-bold">Advanced</a>
+                        <a href="advancedSearch.php" class="text-decoration-none link-secondary fw-bold">Advanced</a>
                     </div>
 
                 </div>
