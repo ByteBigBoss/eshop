@@ -48,7 +48,7 @@
                                 <input type="text" class="form-control" placeholder="Type keyword to search..."/>
                             </div>
                             <div class="col-12 col-lg-2 mt-2 mb-1 d-grid">
-                                <button class="btn btn-primary">Search</button>
+                                <button class="btn btn-primary" onclick="advancedSearch(0);">Search</button>
                             </div>
                             <div class="col-12">
                                 <hr class="border border-3 border-primary">
@@ -63,7 +63,7 @@
                                 <div class="row">
 
                                     <div class="col-12 col-lg-4 mb-3">
-                                        <select class="form-select">
+                                        <select class="form-select" id="c1">
                                             <option value="0">Select Category</option>
                                                 <?php
                                                 include "connection.php";
@@ -87,39 +87,39 @@
                                     </div>
 
                                     <div class="col-12 col-lg-4 mb-3">
-                                        <select class="form-select">
+                                        <select class="form-select" id="b1">
                                             <option value="0">Select Brand</option>
                                             <option value="">def</option>
                                         </select>
                                     </div>
 
                                     <div class="col-12 col-lg-4 mb-3">
-                                        <select class="form-select">
+                                        <select class="form-select" id="m">
                                             <option value="0">Select Model</option>
                                             <option value="">ghi</option>
                                         </select>
                                     </div>
 
                                     <div class="col-12 col-lg-6 mb-3">
-                                        <select class="form-select">
+                                        <select class="form-select" id="c2">
                                             <option value="0">Select Condition</option>
                                             <option value="">klm</option>
                                         </select>
                                     </div>
 
                                     <div class="col-12 col-lg-6 mb-3">
-                                        <select class="form-select">
+                                        <select class="form-select" id="c3">
                                             <option value="0">Select Colour</option>
                                             <option value="">wer</option>
                                         </select>
                                     </div>
 
                                     <div class="col-12 col-lg-6 mb-3">
-                                        <input type="text" class="form-control" placeholder="Price From..."/>
+                                        <input type="text" class="form-control" placeholder="Price From..." id="pf"/>
                                     </div>
 
                                     <div class="col-12 col-lg-6 mb-3">
-                                        <input type="text" class="form-control" placeholder="Price To..."/>
+                                        <input type="text" class="form-control" placeholder="Price To..." id="pt"/>
                                     </div>
 
                                 </div>
@@ -134,7 +134,7 @@
             <div class="offset-lg-2 col-12 col-lg-8 bg-body rounded mb-3">
                 <div class="row">
                     <div class="offset-8 col-4 mt-2 mb-2">
-                        <select class="form-select border border-top-0 border-start-0 border-end-0 border-2 border-dark">
+                        <select class="form-select border border-top-0 border-start-0 border-end-0 border-2 border-dark" id="s">
                             <option value="0">SORT BY</option>
                             <option value="1">PRICE LOW TO HIGH</option>
                             <option value="2">PRICE HIGH TO LOW</option>

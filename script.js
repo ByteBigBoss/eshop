@@ -529,3 +529,43 @@ function basicSearch(x) {
   request.send(form);
 
 }
+
+function advancedSearch(x){
+
+    var txt = document.getElementById("t");
+    var category = document.getElementById("c1");
+    var brand = document.getElementById("b1");
+    var model = document.getElementById("m");
+    var condition = document.getElementById("c2");
+    var color = document.getElementById("c3");
+    var from = document.getElementById("pf");
+    var to = document.getElementById("pt");
+    var sort = document.getElementById("s");
+
+    var form = new FormData();
+    form.append("t", txt.value);
+    form.append("cat", category.value);
+    form.append("b", brand.value);
+    form.append("m", model.value);
+    form.append("con", condition.value);
+    form.append("col", color.value);
+    form.append("pf", from.value);
+    form.append("pt", to.value);
+    form.append("s", sort.value);
+    form.append("page", x);
+
+    var request = new XMLHttpRequest();
+
+    request.onreadystatechange = function (){
+      if(request.readyState == 4 && request.status == 200){
+
+        var response = request.responseText;
+        document.getElementById("view_are").innerHTML =response;
+
+      }
+    }
+
+    request.open("POST","advacedSearchProcess.php", true);
+    request.send(form);
+
+}
