@@ -569,3 +569,52 @@ function advancedSearch(x){
     request.send(form);
 
 }
+
+function loadMainImg(id){
+
+  var sample_img = document.getElementById("productImg"+id).src;
+  var main_img = document.getElementById("mainImg");
+
+  main_img.style.backgroundImage = "url("+sample_img+")";
+
+}
+
+function check_value(qty){
+
+  var input = document.getElementById("qty_input");
+
+  if(input.value <= 0){
+    alert("Quantity must be 01 or more.");
+    input.value = 1;
+  }else if(input.value > qty){
+    alert("Insufficient Quantity");
+    alert.value = qty;
+  }
+
+}
+
+function qty_inc(qty){
+  var input = document.getElementById("qty_input");
+  
+  if(input.value < qty){
+    var newValue = parseInt(input.value) + 1;
+    input.value = newValue.toString;
+  }else{
+    alert("Maximum quantity has achieved.");
+  }
+
+}
+
+function qty_dec(){
+
+  var input = document.getElementById("qty_input");
+  
+  if(input.value > 1){
+    var newValue = parseInt(input.value) - 1;
+    input.value = newValue.toString;
+  }else{
+    alert("Minimum quantity has achieved.");
+    input.value = 1;
+  }
+
+}
